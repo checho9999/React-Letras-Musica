@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
-const Formulario = () => {
+const Formulario = ( { guardarBusquedaLetra } ) => {
 
     //state para tener la actualizacion de la busqueda segun el input del usuario
     const [ busqueda, guardarBusqueda ] = useState({
@@ -37,6 +38,9 @@ const Formulario = () => {
 
         //Reseteamos el valor a false, porque los datos estaban completos
         guardarError(false);
+
+        //Actualizamos en el state de la app principal el input validado
+        guardarBusquedaLetra(busqueda)
 
     }
 
@@ -94,5 +98,9 @@ const Formulario = () => {
         </div>
     );
 }
- 
+
+Formulario.propTypes = {
+    guardarBusquedaLetra: PropTypes.func.isRequired
+}
+
 export default Formulario;
